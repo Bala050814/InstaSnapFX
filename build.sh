@@ -4,7 +4,7 @@
 echo "Compiling C code into libgrayscale.so..."
 
 # Use GCC to compile the C code into a shared object file (.so)
-gcc -shared -o libgrayscale.so -fPIC grayscale_filter.c
+gcc -shared -o libgrayscale.so -fPIC grayscale.c
 
 # Check if the compilation was successful
 if [ $? -eq 0 ]; then
