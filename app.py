@@ -1,13 +1,17 @@
+import os
 import ctypes
 import numpy as np
 import cv2
 import platform
 
+# Get the absolute path to the current working directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Load the correct library based on the operating system
 if platform.system() == 'Windows':
-    lib = ctypes.CDLL('./libgrayscale.dll')  # Windows: .dll
+    lib = ctypes.CDLL(os.path.join(current_dir, 'libgrayscale.dll'))  # Windows: .dll
 else:
-    lib = ctypes.CDLL('./libgrayscale.so')  # Linux: .so
+    lib = ctypes.CDLL(os.path.join(current_dir, 'libgrayscale.so'))  # Linux: .so
 
 # Define function signature for the grayscale_vignette function from C code
 lib.grayscale_vignette.argtypes = [ctypes.POINTER(ctypes.c_uint8), ctypes.c_int, ctypes.c_int]
